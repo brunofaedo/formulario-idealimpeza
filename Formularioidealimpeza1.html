@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Lead</title>
+    <style>
+        /* CSS body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Define o fundo da página como branco */
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 1); /* Fundo branco */
+    padding: 20px;
+    max-width: 400px;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="tel"],
+.form-container input[type="radio"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.form-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-container button:hover {
+    background-color: #45a049;
+}
+*/
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Orçamento gratuito</h1>
+        <form id="leadForm">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="telefone">Telemóvel *</label>
+            <input type="tel" id="telefone" name="telefone" required>
+
+            <label>Escolha uma opção *</label>
+            <label><input type="radio" name="opcao" value="Particular" required> Particular</label>
+            <label><input type="radio" name="opcao" value="Condomínio" required> Condomínio</label>
+            <label><input type="radio" name="opcao" value="Empresa" required> Empresa</label>
+
+            <label>Qual problema quer que resolvamos? *</label>
+            <label><input type="radio" name="problema" value="Limpeza e impermeabilização de telhado" required> Limpeza e impermeabilização de telhado</label>
+            <label><input type="radio" name="problema" value="Remoção de entulhos" required> Remoção de entulhos</label>
+
+            <button type="submit">Quero um orçamento gratuito</button>
+        </form>
+    </div>
+
+    <script>
+        // Script document.getElementById('leadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    var formData = {
+        nome: document.getElementById('nome').value,
+        telefone: document.getElementById('telefone').value,
+        opcao: document.querySelector('input[name="opcao"]:checked').value,
+        problema: document.querySelector('input[name="problema"]:checked').value
+    };
+
+    fetch('https://script.google.com/macros/s/AKfycbxqmPR_HiDQ1CvELaJ3iZxLyVreNx7BsH0w76uOly8wSW84LF7KoQ4pV7tn4mpFueXXbg/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    }).then(response => {
+        alert('Formulário enviado com sucesso!');
+        document.getElementById('leadForm').reset();
+    }).catch(error => {
+        alert('Erro ao enviar o formulário. Tente novamente.');
+        console.error('Erro:', error);
+    });
+});
+    </script>
+</body>
+</html>
